@@ -174,16 +174,16 @@ paths:
               schema:
                 $ref: "#/components/schemas/WordCount"
   /words/many-word:
-    get:
+    post:
       parameters:
         - name: ids
           in: query
           required: true
           description: array id number
           schema:
-            type: string
+            type: array
       tags:
-        - WordsMany
+        - WordMany
       security:
         []
       summary: Get words in array.
