@@ -175,22 +175,23 @@ paths:
                 $ref: "#/components/schemas/WordCount"
   /words/many-word:
     post:
-      parameters:
-        - name: ids
-          in: query
-          required: true
-          description: array id number
-          schema:
-            type: array
       tags:
-        - WordMany
+        - Word Many
       security:
         []
-      summary: Get words in array.
-      description: Get words in array.
+      summary: Word Many
+      description: Get words for id array
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: string
       responses:
         200:
-          description: Successful operation
+          description: Successful.
           content:
             application/json:
               schema:
