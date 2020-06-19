@@ -31,4 +31,12 @@ const get = async id => {
   return word;
 };
 
-module.exports = { getAll, getCount, get };
+const getMany = async arrayId => {
+  const word = await Word.find({ _id: { $in: arrayId } });
+  if (!word) {
+    throw new NOT_FOUND_ERROR(ENTITY_NAME, 'id');
+  }
+  return word;
+};
+
+module.exports = { getAll, getCount, get, getMany };

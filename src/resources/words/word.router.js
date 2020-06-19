@@ -1,5 +1,6 @@
 const { OK } = require('http-status-codes');
 const router = require('express').Router();
+const qs = require('qs');
 
 const wordService = require('./word.service');
 const { BAD_REQUEST_ERROR } = require('../../errors/appErrors');
@@ -53,6 +54,12 @@ router.route('/count').get(async (req, res) => {
   }
 
   res.status(OK).send({ count });
+});
+
+router.route('/many-word').get(async (req, res) => {
+  const arrId = qs.parse(req.query.ids);
+  const word = await wordService.getMany(arrId);
+  res.status(OK).send(word);
 });
 
 router.route('/:id').get(async (req, res) => {

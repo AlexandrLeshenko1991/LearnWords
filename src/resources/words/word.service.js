@@ -7,4 +7,6 @@ const getCount = async (group, wordsPerExampleSentenceLTE) =>
 
 const get = async wordId => wordRepo.get(wordId);
 
-module.exports = { getAll, getCount, get };
+const getMany = async arrayId => wordRepo.getMany(arrayId);
+
+module.exports = { getAll, getCount, get, getMany };
